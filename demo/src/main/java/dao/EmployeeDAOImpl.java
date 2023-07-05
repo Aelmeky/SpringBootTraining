@@ -31,8 +31,8 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 
 	@Override
 	public void save(Employee emp) {
-		// TODO Auto-generated method stub
-
+		Session currentSession = entityManager.unwrap(Session.class);
+		currentSession.persist(emp);
 	}
 
 	@Override
