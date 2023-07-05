@@ -35,7 +35,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		currentSession.remove(currentSession.get(Employee.class, id));
 
 	}
 

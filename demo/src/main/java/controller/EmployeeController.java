@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +33,17 @@ public class EmployeeController {
 	
 	@GetMapping("/employee/{id}")
 	public Employee get(@PathVariable int id){
-		return employeeService.get(id);
+		Employee emp = employeeService.get(id);
+		if(emp.equals(null)) {
+			 throw new RuntimeException("Employee with id " + id +" was not found");
+		}
+		return emp;
+	}
+	
+	@DeleteMapping("/employee/{id}")
+	public String delete(@PathVariable int id) {
+		employeeService.delete(id);
+		return "employee has been deleted with id " + id;
 	}
 
 }

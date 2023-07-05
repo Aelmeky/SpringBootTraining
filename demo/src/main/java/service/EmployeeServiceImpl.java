@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	@Transactional
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		employeeDAO.delete(id);
 		
 	}
 	
