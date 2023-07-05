@@ -22,8 +22,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	@Transactional
 	@Override
 	public Employee get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDAO.get(id);
 	}
 	@Transactional
 	@Override

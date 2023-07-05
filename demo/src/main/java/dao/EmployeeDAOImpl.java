@@ -15,23 +15,21 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 
 	@Autowired
 	private EntityManager entityManager;
+	Session currentSession = entityManager.unwrap(Session.class);
 
 	@Override
 	public List<Employee> get() {
-		Session currentSession = entityManager.unwrap(Session.class);
 		Query<Employee> query = currentSession.createQuery("from Employee", Employee.class);
 		return query.getResultList();
 	}
 
 	@Override
 	public Employee get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return currentSession.get(Employee.class, id);
 	}
 
 	@Override
 	public void save(Employee emp) {
-		Session currentSession = entityManager.unwrap(Session.class);
 		currentSession.persist(emp);
 	}
 
